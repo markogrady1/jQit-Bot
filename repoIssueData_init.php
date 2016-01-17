@@ -30,11 +30,11 @@ function getOpenIssues() {
 
 			if(!$rawData){
 
-				if($j== 1){
+				if($j == 1){
 
 				$handle = fopen("issues/open/" . $file . "_issues.json", 'w');
 
-				}else{
+				} else {
 
 				$handle = fopen("issues/open/" . $file . "_issues.json", 'a+');
 				}
@@ -45,23 +45,20 @@ function getOpenIssues() {
 				$rawData1 = $issue->toJSONArray($rawData);
 				$fileData .= $rawData1;
 				
-				if($j == 1){
+				if ($j == 1) {
 
 				$handle = fopen("issues/open/" . $file . "_issues.json", 'w');
 
-				}else{
+				} else {
 
 				$handle = fopen("issues/open/" . $file . "_issues.json", 'a+');
 				}
 			}
 		}
 
-		// if($fileData != ""){
-			$fileData = "[" . $fileData;
-		// }
-
+		$fileData = "[" . $fileData;
 		$fileData = preg_replace("/\,$/", "]", $fileData);
-		if($fileData == "["){
+		if ($fileData == "[") {
 			$fileData = $fileData . "]";
 		}
 		fwrite($handle, $fileData);
@@ -88,15 +85,15 @@ function getClosedIssues() {
 	$endState = false;
 	$file = 1 ;
 	foreach ($pullUrlArray as $pullArr) {
-		for($j= 1;$j< 400; $j++){
+		for($j= 1; $j < 400; $j++){
 
 		$url = $pull->assignClient($pullArr, "&page=" . $j, "&state=closed");
 
 		$rawData = $pull->getClosedCurl($url, false);
 
-			if(!$rawData){
+			if (!$rawData) {
 
-				if($j== 1){
+				if ($j== 1) {
 
 				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'w');
 
@@ -106,17 +103,17 @@ function getClosedIssues() {
 				}
 				break;
 
-			}else{
+			} else {
 
 				$rawData1 = $pull->toJSONArray($rawData);
 			
 				$fileData .= $rawData1;
 				
-				if($j == 1){
+				if ($j == 1) {
 
 				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'w');
 
-				}else{
+				} else {
 
 				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'a+');
 				}
@@ -125,7 +122,7 @@ function getClosedIssues() {
 		$fileData = "[" . $fileData . "]";
 		$fileData = preg_replace("/}{/", "},{", $fileData);
 		$fileData = preg_replace("/\,]$/", "]", $fileData);
-		if($fileData == "["){
+		if ($fileData == "[") {
 			$fileData = $fileData . "]";
 		}
 		fwrite($handle, $fileData);
