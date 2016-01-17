@@ -131,11 +131,6 @@ function getOpenPulls() {
 	}
 }
 
-
-
-
-
-
 function getRepositories(Array $jQrepositories) {
 	$fileData = "";
 
