@@ -1,0 +1,9 @@
+.idea
+.DS_STORE
+config.php
+issues/open/*
+issues/closed/*
+pulls/open/*
+pulls/closed/*
+repo_collection/*
+repo_history/*
