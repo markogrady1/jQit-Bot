@@ -24,6 +24,6 @@ Once a day at midnight.
 Lastly we call the ``repoHistory_init.php`` which will consistently store data over a period of time.   
 ```
 
-0 1 * * *  /home/somedir/repoHistory_init.php
+0 2 * * *  /home/somedir/repoHistory_init.php
 
 ```
