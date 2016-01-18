@@ -136,7 +136,7 @@ class Curl {
 		foreach ($data as $key => $value) {
 
 			$repoName[$i]['name'] = $value['name'];
-			$repoName[$i]['issues'] = intval(['open_issues']) - intval($openPrArray[$p++]);
+			$repoName[$i]['issues'] = intval($value['open_issues']) - intval($openPrArray[$p++]);
 			$repoString = $repoName[$i]['name'] . "  " . $repoName[$i++]['issues'] . "," . PHP_EOL;
 				$handle = fopen($filename, 'a+');
 				fwrite($handle, $repoString);			
