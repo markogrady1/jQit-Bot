@@ -1,6 +1,8 @@
 <?php
-//define the the client id values that have been given
+
+//define your client id
 define("ID", "somevalue");
+//define your client secret
 define("SEC", "somevalue");
  
 ?>
