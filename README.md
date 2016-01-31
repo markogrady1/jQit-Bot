@@ -1,7 +1,7 @@
 # jQit_crons
 
-These files are to be used in conjunction with **jQit** (jQuery Issue Tracker).   
-They will combine to acquire all the jquery GitHub API data that will be required to run a successful tracker.
+These bot scripts are to be used in conjunction with **jQit** (jQuery Issue Tracker).   
+They will traverse the GitHub API to acquire all the jquery GitHub API data that will be required to run a successful tracker.
 
 ### Implement cronjobs  
 Note: the following files should be called in this order.   
