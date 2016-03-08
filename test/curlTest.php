@@ -10,12 +10,14 @@ class CurlTest extends \PHPUnit_Framework_TestCase {
     }
     
     public function testToJSONArray() {
+        echo "Test toJSONArray function\n";
         $data = json_encode(array("one", "two", "three"));
         $returnVal = $this->curlVal->toJSONArray($data);
         $this->assertEquals('"one","two","three",', $returnVal);
     }
     
     public function testAssignClient() {
+        echo "Test assignClient function\n";
         $returnedURL = $this->curlVal->assignClient("http://someurl.com", 1, "open");
         $this->assertEquals("http://someurl.com?client_id=ID&client_secret=SECopen1", $returnedURL);
     }
