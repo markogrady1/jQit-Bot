@@ -1,4 +1,4 @@
-<?php 
+<?php  namespace src;
 
 set_time_limit(0);
 include 'config.php';
@@ -9,7 +9,7 @@ getClosedIssues();
 
 
 function getOpenIssues() {
-	$string = file_get_contents("repo_collection/rep.json");
+	$string = file_get_contents("../repo_collection/rep.json");
 	$json_a = json_decode($string, true);
 	$issueUrlArr = array();
 	$i = 0;
@@ -32,11 +32,11 @@ function getOpenIssues() {
 
 				if($j== 1){
 
-				$handle = fopen("issues/open/" . $file . "_issues.json", 'w');
+				$handle = fopen("../issues/open/" . $file . "_issues.json", 'w');
 
 				}else{
 
-				$handle = fopen("issues/open/" . $file . "_issues.json", 'a+');
+				$handle = fopen("../issues/open/" . $file . "_issues.json", 'a+');
 				}
 				break;
 
@@ -47,11 +47,11 @@ function getOpenIssues() {
 				
 				if($j == 1){
 
-				$handle = fopen("issues/open/" . $file . "_issues.json", 'w');
+				$handle = fopen("../issues/open/" . $file . "_issues.json", 'w');
 
 				}else{
 
-				$handle = fopen("issues/open/" . $file . "_issues.json", 'a+');
+				$handle = fopen("../issues/open/" . $file . "_issues.json", 'a+');
 				}
 			}
 		}
@@ -75,7 +75,7 @@ function getOpenIssues() {
 
 
 function getClosedIssues() {
-	$string = file_get_contents("repo_collection/rep.json");
+	$string = file_get_contents("../repo_collection/rep.json");
 	$json_a = json_decode($string, true);
 	$pullUrlArray = array();
 	$i = 0;
@@ -98,11 +98,11 @@ function getClosedIssues() {
 
 				if($j== 1){
 
-				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'w');
+				$handle = fopen("../issues/closed/" . $file . "_closed_issues.json", 'w');
 
 				}else{
 
-				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'a+');
+				$handle = fopen("../issues/closed/" . $file . "_closed_issues.json", 'a+');
 				}
 				break;
 
@@ -114,11 +114,11 @@ function getClosedIssues() {
 				
 				if($j == 1){
 
-				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'w');
+				$handle = fopen("../issues/closed/" . $file . "_closed_issues.json", 'w');
 
 				}else{
 
-				$handle = fopen("issues/closed/" . $file . "_closed_issues.json", 'a+');
+				$handle = fopen("../issues/closed/" . $file . "_closed_issues.json", 'a+');
 				}
 			}
 		}

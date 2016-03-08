@@ -1,4 +1,4 @@
-<?php 
+<?php  namespace src;
 set_time_limit(0);
 include 'config.php';
 include 'curl.php';
@@ -9,7 +9,7 @@ getOpenPulls();
 getClosedPulls();
 
 function getClosedPulls() {
-	$string = file_get_contents("repo_collection/rep.json");
+	$string = file_get_contents("../repo_collection/rep.json");
 		$json_a = json_decode($string, true);
 		$pullUrlArr = array();
 		$i = 0;
@@ -32,11 +32,11 @@ function getClosedPulls() {
 
 					if($j== 1){
 
-					$handle = fopen("pulls/closed/" . $file . "_closed_pulls.json", 'w');
+					$handle = fopen("../pulls/closed/" . $file . "_closed_pulls.json", 'w');
 
 					}else{
 
-					$handle = fopen("pulls/closed/" . $file . "_closed_pulls.json", 'a+');
+					$handle = fopen("../pulls/closed/" . $file . "_closed_pulls.json", 'a+');
 					}
 					break;
 
@@ -47,11 +47,11 @@ function getClosedPulls() {
 					
 					if($j == 1){
 
-					$handle = fopen("pulls/closed/" . $file . "_closed_pulls.json", 'w');
+					$handle = fopen("../pulls/closed/" . $file . "_closed_pulls.json", 'w');
 
 					}else{
 
-					$handle = fopen("pulls/closed/" . $file . "_closed_pulls.json", 'a+');
+					$handle = fopen("../pulls/closed/" . $file . "_closed_pulls.json", 'a+');
 					}
 				}
 			}
@@ -72,7 +72,7 @@ function getClosedPulls() {
 
 
 function getOpenPulls() {
-	$string = file_get_contents("repo_collection/rep.json");
+	$string = file_get_contents("../repo_collection/rep.json");
 	$json_a = json_decode($string, true);
 	$pullsUrlArr = array();
 	$i = 0;
@@ -95,11 +95,11 @@ function getOpenPulls() {
 
 				if($j== 1){
 
-				$handle = fopen("pulls/open/" . $file . "_pulls.json", 'w');
+				$handle = fopen("../pulls/open/" . $file . "_pulls.json", 'w');
 
 				}else{
 
-				$handle = fopen("pulls/open/" . $file . "_pulls.json", 'a+');
+				$handle = fopen("../pulls/open/" . $file . "_pulls.json", 'a+');
 				}
 				break;
 
@@ -110,11 +110,11 @@ function getOpenPulls() {
 				
 				if($j == 1){
 
-				$handle = fopen("pulls/open/" . $file . "_pulls.json", 'w');
+				$handle = fopen("../pulls/open/" . $file . "_pulls.json", 'w');
 
 				}else{
 
-				$handle = fopen("pulls/open/" . $file . "_pulls.json", 'a+');
+				$handle = fopen("../pulls/open/" . $file . "_pulls.json", 'a+');
 				}
 			}
 		}
@@ -153,11 +153,11 @@ function getRepositories(Array $jQrepositories) {
 
 				if($j== 1){
 
-				$handle = fopen("repo_collection/" . $file . ".json", 'w');
+				$handle = fopen("../repo_collection/" . $file . ".json", 'w');
 
 				}else{
 
-				$handle = fopen("repo_collection/" . $file . ".json", 'a+');
+				$handle = fopen("../repo_collection/" . $file . ".json", 'a+');
 				}
 				break;
 
@@ -169,11 +169,11 @@ function getRepositories(Array $jQrepositories) {
 				
 				if($j == 1){
 
-				$handle = fopen("repo_collection/" . $file . ".json", 'w');
+				$handle = fopen("../repo_collection/" . $file . ".json", 'w');
 
 				}else{
 
-				$handle = fopen("repo_collection/" . $file . ".json", 'a+');
+				$handle = fopen("../repo_collection/" . $file . ".json", 'a+');
 				}
 			}
 		}

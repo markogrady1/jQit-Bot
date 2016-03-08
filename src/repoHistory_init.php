@@ -1,4 +1,4 @@
-<?php 
+<?php  namespace src;
 set_time_limit(0);
 include 'config.php';
 include 'curl.php';
@@ -16,7 +16,7 @@ getClosedIssueHistory($closedPrArray);
 
 
 function getClosedPullsHistory() {
-	$stringVal = file_get_contents("repo_collection/rep.json");
+	$stringVal = file_get_contents("../repo_collection/rep.json");
 
 		$json_a = json_decode($stringVal, true);
 		$issueUrlArr = array();
@@ -30,9 +30,9 @@ function getClosedPullsHistory() {
 				$isoFormat = substr($isoFormat[0], 0, 19);
 				$isoFormat = $isoFormat . 'Z';
 				$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
-		$filename = "repo_history/closed_PR_history.txt";
+		$filename = "../repo_history/closed_PR_history.txt";
 		$handle = fopen($filename, 'a+');
-						fwrite($handle, $today);
+        fwrite($handle, $today);
 
 
 		$fileData = "";
@@ -70,7 +70,7 @@ function getClosedPullsHistory() {
 }
 
 function getClosedIssueHistory($closedPrArray) {
-	$stringVal = file_get_contents("repo_collection/rep.json");
+	$stringVal = file_get_contents("../repo_collection/rep.json");
 
 	$json_a = json_decode($stringVal, true);
 	$issueUrlArr = array();
@@ -84,7 +84,7 @@ function getClosedIssueHistory($closedPrArray) {
 			$isoFormat = substr($isoFormat[0], 0, 19);
 			$isoFormat = $isoFormat . 'Z';
 			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
-	$filename = "repo_history/closed_issue_history.txt";
+	$filename = "../repo_history/closed_issue_history.txt";
 	$handle = fopen($filename, 'a+');
 					fwrite($handle, $today);
 
@@ -122,7 +122,7 @@ function getClosedIssueHistory($closedPrArray) {
 }
 
 function getPullsHistory() {
-	$stringVal = file_get_contents("repo_collection/rep.json");
+	$stringVal = file_get_contents("../repo_collection/rep.json");
 
 	$json_a = json_decode($stringVal, true);
 	$issueUrlArr = array();
@@ -136,7 +136,7 @@ function getPullsHistory() {
 			$isoFormat = substr($isoFormat[0], 0, 19);
 			$isoFormat = $isoFormat . 'Z';
 			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
-	$filename = "repo_history/repo_pulls_history.txt";
+	$filename = "../repo_history/repo_pulls_history.txt";
 	$handle = fopen($filename, 'a+');
 					fwrite($handle, $today);
 
@@ -174,7 +174,7 @@ function getPullsHistory() {
 return $openPrArray;
 }
 function getIssueHistory($openPrArray) {
-    $stringVal = file_get_contents("repo_collection/rep.json");
+    $stringVal = file_get_contents("../repo_collection/rep.json");
 
     $json_a = json_decode($stringVal, true);
     $issueUrlArr = array();
@@ -188,7 +188,7 @@ function getIssueHistory($openPrArray) {
     $isoFormat = substr($isoFormat[0], 0, 19);
     $isoFormat = $isoFormat . 'Z';
     $today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
-    $filename = "repo_history/repo_issue_history.txt";
+    $filename = "../repo_history/repo_issue_history.txt";
     $handle = fopen($filename, 'a+');
     fwrite($handle, $today);
 

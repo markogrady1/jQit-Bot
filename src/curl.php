@@ -1,11 +1,11 @@
-<?php 
+<?php namespace src;
 
 /**
  *	This class deals with the HTTP requests for various 
  *   URLs concerning Issues and Pull Requests
  *
  **/
-class Curl{
+class Curl {
 
 	public function  getCurlData($url, $isHistory = false) {
 	
