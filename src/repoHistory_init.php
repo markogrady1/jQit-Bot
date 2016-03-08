@@ -14,7 +14,6 @@ getIssueHistory($openPrArray);
 getClosedIssueHistory($closedPrArray);
 
 
-
 function getClosedPullsHistory() {
 	$stringVal = file_get_contents("../repo_collection/rep.json");
 
@@ -25,6 +24,7 @@ function getClosedPullsHistory() {
 			$issueUrlArr[$i++] = $value['pulls_url'];
 		}
 		$date = new DateTime();
+
 				$isoFormat =  $date->format('c = U');
 				$isoFormat = split(' = ', $isoFormat);
 				$isoFormat = substr($isoFormat[0], 0, 19);
@@ -45,15 +45,15 @@ function getClosedPullsHistory() {
 		$k = 0;
 		foreach ($issueUrlArr as $isslArr) {
 			$closedData = 0;
-			$n = split('/',$issueUrlArr[$k]);
+			$n = split('/', $issueUrlArr[$k]);
 			
-			for($j= 1;$j< 400; $j++){
+			for ($j= 1; $j < 400; $j++) {
 
 				$url = $pull->assignClient($isslArr, "&page=" . $j, "&per_page=100&state=closed");
 
 				$rawData = $pull->getCurlData($url, true);
 
-				if(!$rawData){
+				if (!$rawData) {
 
 					break;
 
@@ -63,7 +63,7 @@ function getClosedPullsHistory() {
 			}
             $closedPrArray[$k] = $closedData;
 			$dataArray[$k++] = "{ 'name': " . $n[5] . ", closed_issues: " . $closedData . "}";
-			$str= $n[5] ."  ". $closedData .",".PHP_EOL;
+			$str = $n[5] . "  " . $closedData . "," . PHP_EOL;
 			fwrite($handle, $str);
 	}
     return $closedPrArray;
@@ -79,15 +79,23 @@ function getClosedIssueHistory($closedPrArray) {
 		$issueUrlArr[$i++] = $value['issues_url'];
 	}
 	$date = new DateTime();
+<<<<<<< HEAD:src/repoHistory_init.php
 			$isoFormat =  $date->format('c = U');
 			$isoFormat = split(' = ', $isoFormat);
 			$isoFormat = substr($isoFormat[0], 0, 19);
 			$isoFormat = $isoFormat . 'Z';
 			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 	$filename = "../repo_history/closed_issue_history.txt";
+=======
+	$isoFormat =  $date->format('c = U');
+	$isoFormat = split(' = ', $isoFormat);
+	$isoFormat = substr($isoFormat[0], 0, 19);
+	$isoFormat = $isoFormat . 'Z';
+	$today = "*" . $isoFormat . " = " . $date->format('U') . ',' . PHP_EOL;
+	$filename = "repo_history/closed_issue_history.txt";
+>>>>>>> a939c273a057c051c716ea75b672a32bf807d30c:repoHistory_init.php
 	$handle = fopen($filename, 'a+');
-					fwrite($handle, $today);
-
+	fwrite($handle, $today);
 
 	$fileData = "";
 	$dataString = array();
@@ -99,24 +107,24 @@ function getClosedIssueHistory($closedPrArray) {
 	$k = 0;
 		foreach ($issueUrlArr as $isslArr) {
 			$closedData = 0;
-			$n = split('/',$issueUrlArr[$k]);
+			$n = split('/', $issueUrlArr[$k]);
 			
-			for($j= 1;$j< 400; $j++){
+			for($j= 1; $j < 400; $j++){
 
 				$url = $issue->assignClient($isslArr, "&page=" . $j, "&per_page=100&state=closed");
 
 				$rawData = $issue->getCurlData($url, true);
 
-				if(!$rawData){
+				if (!$rawData) {
 					break;
 
-				}else{
+				} else {
 					$closedData += $rawData;
 				}
 			}
             $closedData = ($closedData - $closedPrArray[$k]);
 			$dataArray[$k++] = "{ 'name': " . $n[5] . ", closed_issues: " . $closedData . "}";
-			$str= $n[5] ."  ". $closedData .",".PHP_EOL;
+			$str= $n[5] . "  " . $closedData . "," . PHP_EOL;
 			fwrite($handle, $str);
 		}
 }
@@ -131,15 +139,23 @@ function getPullsHistory() {
 		$issueUrlArr[$i++] = $value['pulls_url'];
 	}
 	$date = new DateTime();
+<<<<<<< HEAD:src/repoHistory_init.php
 			$isoFormat =  $date->format('c = U');
 			$isoFormat = split(' = ', $isoFormat);
 			$isoFormat = substr($isoFormat[0], 0, 19);
 			$isoFormat = $isoFormat . 'Z';
 			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 	$filename = "../repo_history/repo_pulls_history.txt";
+=======
+	$isoFormat =  $date->format('c = U');
+	$isoFormat = split(' = ', $isoFormat);
+	$isoFormat = substr($isoFormat[0], 0, 19);
+	$isoFormat = $isoFormat . 'Z';
+	$today = "*" . $isoFormat . " = " . $date->format('U') . ',' . PHP_EOL;
+	$filename = "repo_history/repo_pulls_history.txt";
+>>>>>>> a939c273a057c051c716ea75b672a32bf807d30c:repoHistory_init.php
 	$handle = fopen($filename, 'a+');
-					fwrite($handle, $today);
-
+	fwrite($handle, $today);
 
 	$fileData = "";
 	$dataString = array();
@@ -153,7 +169,7 @@ function getPullsHistory() {
 		$closedData = 0;
 		$n = split('/',$issueUrlArr[$k]);
 		
-		for($j= 1;$j< 400; $j++){
+		for ($j= 1; $j < 400; $j++) {
 
 			$url = $pull->assignClient($isslArr, "&page=" . $j, "&per_page=100");
 
@@ -167,9 +183,9 @@ function getPullsHistory() {
 			}
 		}
         $openPrArray[$k] = $closedData;
-		$dataArray[$k++] = "{ 'name': " . $n[5] . ", issues: " . $closedData . "}";
-		$str= $n[5] ."  ". $closedData .",".PHP_EOL;
-		fwrite($handle, $str);
+	$dataArray[$k++] = "{ 'name': " . $n[5] . ", issues: " . $closedData . "}";
+	$str= $n[5] . "  " . $closedData . "," . PHP_EOL;
+	fwrite($handle, $str);
 	}
 return $openPrArray;
 }
@@ -187,11 +203,15 @@ function getIssueHistory($openPrArray) {
     $isoFormat = split(' = ', $isoFormat);
     $isoFormat = substr($isoFormat[0], 0, 19);
     $isoFormat = $isoFormat . 'Z';
+<<<<<<< HEAD:src/repoHistory_init.php
     $today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
     $filename = "../repo_history/repo_issue_history.txt";
+=======
+    $today = "*" . $isoFormat . " = " . $date->format('U') . ',' . PHP_EOL;
+    $filename = "repo_history/repo_issue_history.txt";
+>>>>>>> a939c273a057c051c716ea75b672a32bf807d30c:repoHistory_init.php
     $handle = fopen($filename, 'a+');
     fwrite($handle, $today);
-
 
     $fileData = "";
     $dataString = array();
@@ -203,24 +223,24 @@ function getIssueHistory($openPrArray) {
     $k = 0;
     foreach ($issueUrlArr as $isslArr) {
         $closedData = 0;
-        $n = split('/',$issueUrlArr[$k]);
+        $n = split('/', $issueUrlArr[$k]);
 
-        for($j= 1;$j< 400; $j++){
+        for ($j= 1; $j < 400; $j++) {
 
             $url = $issue->assignClient($isslArr, "&page=" . $j, "&per_page=100&state=open");
 
             $rawData = $issue->getCurlData($url, true);
 
-            if(!$rawData){
+            if (!$rawData) {
                 break;
 
-            }else{
+            } else {
                 $closedData += $rawData;
             }
         }
         $closedData = ($closedData - $openPrArray[$k]);
         $dataArray[$k++] = "{ 'name': " . $n[5] . ", closed_issues: " . $closedData . "}";
-        $str= $n[5] ."  ". $closedData .",".PHP_EOL;
+        $str= $n[5] . "  " . $closedData . "," . PHP_EOL;
         fwrite($handle, $str);
     }
 }
