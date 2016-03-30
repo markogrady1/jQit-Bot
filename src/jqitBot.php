@@ -2,7 +2,6 @@
 
 require_once "../vendor/autoload.php";
 
-//jqitBot
 class JqitBot {
 
 	private $repoHistory;
