@@ -3,7 +3,7 @@
 set_time_limit(0);
 
 
-class RepoIssueData_init {
+class Issues {
 
 	public function __construct() {
 		$this->getOpenIssues();

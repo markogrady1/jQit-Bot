@@ -1,7 +1,7 @@
 <?php  namespace src;
 set_time_limit(0);
 
-class RepoPullData_init {
+class PullRequests {
 
 	// private $jQrepositories;
 

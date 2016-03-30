@@ -9,9 +9,9 @@ class JqitBot {
 	private $issueData;
 
 	public function __construct() {
-		$this->pullData = new RepoPullData_init();
-		$this->issueData = new RepoIssueData_init();
-		$this->$repoHistory = new RepoHistory_init();
+		$this->pullData = new PullRequests();
+		$this->issueData = new Issues();
+		$this->$repoHistory = new History();
 	}
 }
 

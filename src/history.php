@@ -12,7 +12,7 @@ set_time_limit(0);
 // getIssueHistory($openPrArray);
 // getClosedIssueHistory($closedPrArray);
 
-class RepoHistory_init {
+class History {
 
 	private $closedPrArray = array();
 
