@@ -6,7 +6,7 @@ They will traverse the GitHub API to acquire all the jquery GitHub API data that
 ### Implement cronjobs  
 Note: the following files should be called in this order.   
 It is up to you how many of times a day these files will acquire data.  
-Start by calling the ``repoPullData_init.php`` file in the cronjob.    
+Start by calling the ``jqitBot.php`` file in the cronjob. This will in turn trigger the bot into action.    
  
 EXAMPLE:   
 Once a day at midnight.
