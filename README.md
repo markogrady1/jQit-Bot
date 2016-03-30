@@ -16,7 +16,7 @@ Once a day at midnight.
 
 ```
 
-To Test jQit-Bot ability to acquire the correct data. Simply run
+To Test the jQit-Bot and its ability to acquire the correct data. Simply run
 
 ```
 
