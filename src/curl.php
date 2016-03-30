@@ -5,6 +5,9 @@
  *   URLs concerning Issues and Pull Requests
  *
  **/
+
+include "config.php";
+
 class Curl {
 
 	public function  getCurlData($url, $isHistory = false) {

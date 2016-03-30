@@ -1,14 +1,18 @@
 <?php  namespace src;
 set_time_limit(0);
-include 'config.php';
-include 'curl.php';
 
-$jQrepositories[0] = "https://api.github.com/users/jquery/repos";
-getRepositories($jQrepositories);
-getOpenPulls();
-getClosedPulls();
+class RepoPullData_init {
 
-function getClosedPulls() {
+	// private $jQrepositories;
+
+	public function __construct() {
+		$jQrepositories = array("https://api.github.com/users/jquery/repos");
+		$this->getRepositories($jQrepositories);
+		$this->getOpenPulls();
+		$this->getClosedPulls();
+	}
+
+	function getClosedPulls() {
 	$string = file_get_contents("../repo_collection/rep.json");
 		$json_a = json_decode($string, true);
 		$pullUrlArr = array();
@@ -185,4 +189,6 @@ function getRepositories(Array $jQrepositories) {
 		$fileData = null;
 		
 	}
+}
+
 }
