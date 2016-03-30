@@ -23,7 +23,7 @@ function getClosedPullsHistory() {
 		foreach ($json_a as $key => $value) {
 			$issueUrlArr[$i++] = $value['pulls_url'];
 		}
-		$date = new DateTime();
+		$date = new \DateTime();
 
 				$isoFormat =  $date->format('c = U');
 				$isoFormat = split(' = ', $isoFormat);
@@ -78,22 +78,16 @@ function getClosedIssueHistory($closedPrArray) {
 	foreach ($json_a as $key => $value) {
 		$issueUrlArr[$i++] = $value['issues_url'];
 	}
-	$date = new DateTime();
-<<<<<<< HEAD:src/repoHistory_init.php
+	$date = new \DateTime();
+
 			$isoFormat =  $date->format('c = U');
 			$isoFormat = split(' = ', $isoFormat);
 			$isoFormat = substr($isoFormat[0], 0, 19);
 			$isoFormat = $isoFormat . 'Z';
 			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 	$filename = "../repo_history/closed_issue_history.txt";
-=======
-	$isoFormat =  $date->format('c = U');
-	$isoFormat = split(' = ', $isoFormat);
-	$isoFormat = substr($isoFormat[0], 0, 19);
-	$isoFormat = $isoFormat . 'Z';
-	$today = "*" . $isoFormat . " = " . $date->format('U') . ',' . PHP_EOL;
-	$filename = "repo_history/closed_issue_history.txt";
->>>>>>> a939c273a057c051c716ea75b672a32bf807d30c:repoHistory_init.php
+
+
 	$handle = fopen($filename, 'a+');
 	fwrite($handle, $today);
 
@@ -138,22 +132,15 @@ function getPullsHistory() {
 	foreach ($json_a as $key => $value) {
 		$issueUrlArr[$i++] = $value['pulls_url'];
 	}
-	$date = new DateTime();
-<<<<<<< HEAD:src/repoHistory_init.php
+	$date = new \DateTime();
+
 			$isoFormat =  $date->format('c = U');
 			$isoFormat = split(' = ', $isoFormat);
 			$isoFormat = substr($isoFormat[0], 0, 19);
 			$isoFormat = $isoFormat . 'Z';
 			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 	$filename = "../repo_history/repo_pulls_history.txt";
-=======
-	$isoFormat =  $date->format('c = U');
-	$isoFormat = split(' = ', $isoFormat);
-	$isoFormat = substr($isoFormat[0], 0, 19);
-	$isoFormat = $isoFormat . 'Z';
-	$today = "*" . $isoFormat . " = " . $date->format('U') . ',' . PHP_EOL;
-	$filename = "repo_history/repo_pulls_history.txt";
->>>>>>> a939c273a057c051c716ea75b672a32bf807d30c:repoHistory_init.php
+
 	$handle = fopen($filename, 'a+');
 	fwrite($handle, $today);
 
@@ -198,18 +185,15 @@ function getIssueHistory($openPrArray) {
     foreach ($json_a as $key => $value) {
         $issueUrlArr[$i++] = $value['issues_url'];
     }
-    $date = new DateTime();
+    $date = new \DateTime();
     $isoFormat =  $date->format('c = U');
     $isoFormat = split(' = ', $isoFormat);
     $isoFormat = substr($isoFormat[0], 0, 19);
     $isoFormat = $isoFormat . 'Z';
-<<<<<<< HEAD:src/repoHistory_init.php
+
     $today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
     $filename = "../repo_history/repo_issue_history.txt";
-=======
-    $today = "*" . $isoFormat . " = " . $date->format('U') . ',' . PHP_EOL;
-    $filename = "repo_history/repo_issue_history.txt";
->>>>>>> a939c273a057c051c716ea75b672a32bf807d30c:repoHistory_init.php
+
     $handle = fopen($filename, 'a+');
     fwrite($handle, $today);
 
