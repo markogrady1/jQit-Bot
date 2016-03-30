@@ -12,18 +12,14 @@ EXAMPLE:
 Once a day at midnight.
 ```
 
-0 0 * * *  /home/somedir/repoPullData_init.php
+0 0 * * *  /home/somedir//src/jqitBot.php
 
 ```
-``repoIssueData_init.php`` should be called next.   
-```
 
-0 1 * * *  /home/somedir/repoIssueData_init.php
+To Test jQit-Bot ability to acquire the correct data. Simply run
 
 ```
-Lastly we call the ``repoHistory_init.php`` which will consistently store data over a period of time.   
-```
 
-0 2 * * *  /home/somedir/repoHistory_init.php
+$ curl  /home/somedir//src/jqitBot.php
 
 ```
