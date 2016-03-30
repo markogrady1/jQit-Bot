@@ -12,7 +12,7 @@ EXAMPLE:
 Once a day at midnight.
 ```
 
-0 0 * * *  /home/somedir//src/jqitBot.php
+0 0 * * *  /home/somedir/src/jqitBot.php
 
 ```
 
@@ -20,6 +20,6 @@ To Test the jQit-Bot and its ability to acquire the correct data. Simply run
 
 ```
 
-$ curl  /home/somedir//src/jqitBot.php
+$ curl  /home/somedir/src/jqitBot.php
 
 ```
