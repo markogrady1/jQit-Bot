@@ -2,16 +2,6 @@
 
 set_time_limit(0);
 
-
-
-
-// $url = "https://api.github.com/users/jquery/repos";
-
-// $openPrArray = getPullsHistory();
-// $closedPrArray = getClosedPullsHistory();
-// getIssueHistory($openPrArray);
-// getClosedIssueHistory($closedPrArray);
-
 class History {
 
 	private $closedPrArray = array();
