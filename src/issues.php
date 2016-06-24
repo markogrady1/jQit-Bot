@@ -3,14 +3,14 @@
 set_time_limit(0);
 
 
-class Issues {
+class Issues implements Repository {
 
 	public function __construct() {
-		$this->getOpenIssues();
-		$this->getClosedIssues();
+		$this->getOpenData();
+		$this->getClosedData();
 	}
 
-	function getOpenIssues() {
+	function getOpenData() {
 		$string = file_get_contents("../repo_collection/rep.json");
 		$json_a = json_decode($string, true);
 		$issueUrlArr = array();
@@ -73,7 +73,7 @@ class Issues {
 
 
 
-	function getClosedIssues() {
+	function getClosedData() {
 		$string = file_get_contents("../repo_collection/rep.json");
 		$json_a = json_decode($string, true);
 		$pullUrlArray = array();

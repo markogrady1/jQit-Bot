@@ -7,7 +7,6 @@
  **/
 
 include "config.php";
-
 class Curl {
 
 	public function  getCurlData($url, $isHistory = false) {
@@ -166,4 +165,28 @@ class Curl {
 
 		return $rawData1;
     	}
+
+    	function formatData($fileData) {
+			$fileData = "[" . $fileData . "]";
+			$fileData = preg_replace("/}{/", "},{", $fileData);
+			$fileData = preg_replace("/\,]$/", "]", $fileData);
+			if ($fileData == "[") {
+				$fileData = $fileData . "]";
+			}
+
+			return $fileData;
+		}
+
+		function getCurrentDateTime() {
+			$date = new \DateTime();
+			$isoFormat =  $date->format('c = U');
+			$isoFormat = split(' = ', $isoFormat);
+			$isoFormat = substr($isoFormat[0], 0, 19);
+			$isoFormat = $isoFormat . 'Z';
+
+			return $isoFormat;
+		}
+
 }
+
+

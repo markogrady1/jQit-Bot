@@ -1,18 +1,18 @@
 <?php  namespace src;
 set_time_limit(0);
 
-class PullRequests {
+class PullRequests implements Repository {
 
 	// private $jQrepositories;
 
 	public function __construct() {
 		$jQrepositories = array("https://api.github.com/users/jquery/repos");
 		$this->getRepositories($jQrepositories);
-		$this->getOpenPulls();
-		$this->getClosedPulls();
+		$this->getOpenData();
+		$this->getClosedData();
 	}
 
-	function getClosedPulls() {
+	function getClosedData() {
 	$string = file_get_contents("../repo_collection/rep.json");
 		$json_a = json_decode($string, true);
 		$pullUrlArr = array();
@@ -75,7 +75,7 @@ class PullRequests {
 }
 
 
-function getOpenPulls() {
+function getOpenData() {
 	$string = file_get_contents("../repo_collection/rep.json");
 	$json_a = json_decode($string, true);
 	$pullsUrlArr = array();
