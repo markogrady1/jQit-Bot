@@ -17,8 +17,7 @@ class History {
 
 
 	public function getClosedPullsHistory() {
-	$stringVal = file_get_contents("../repo_collection/rep.json");
-
+	    $stringVal = file_get_contents("../repo_collection/rep.json");
 		$json_a = json_decode($stringVal, true);
 		$issueUrlArr = array();
 		$i = 0;
@@ -26,17 +25,14 @@ class History {
 			$issueUrlArr[$i++] = $value['pulls_url'];
 		}
 		$date = new \DateTime();
-
-				$isoFormat =  $date->format('c = U');
-				$isoFormat = split(' = ', $isoFormat);
-				$isoFormat = substr($isoFormat[0], 0, 19);
-				$isoFormat = $isoFormat . 'Z';
-				$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
+		$isoFormat =  $date->format('c = U');
+		$isoFormat = split(' = ', $isoFormat);
+		$isoFormat = substr($isoFormat[0], 0, 19);
+		$isoFormat = $isoFormat . 'Z';
+		$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 		$filename = "../repo_history/closed_PR_history.txt";
 		$handle = fopen($filename, 'a+');
         fwrite($handle, $today);
-
-
 		$fileData = "";
 		$dataString = array();
 		$dataArray = array();
@@ -81,18 +77,14 @@ public function getClosedIssueHistory($closedPrArray) {
 		$issueUrlArr[$i++] = $value['issues_url'];
 	}
 	$date = new \DateTime();
-
-			$isoFormat =  $date->format('c = U');
-			$isoFormat = split(' = ', $isoFormat);
-			$isoFormat = substr($isoFormat[0], 0, 19);
-			$isoFormat = $isoFormat . 'Z';
-			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
+	$isoFormat =  $date->format('c = U');
+	$isoFormat = split(' = ', $isoFormat);
+	$isoFormat = substr($isoFormat[0], 0, 19);
+	$isoFormat = $isoFormat . 'Z';
+	$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 	$filename = "../repo_history/closed_issue_history.txt";
-
-
 	$handle = fopen($filename, 'a+');
 	fwrite($handle, $today);
-
 	$fileData = "";
 	$dataString = array();
 	$dataArray = array();
@@ -104,13 +96,9 @@ public function getClosedIssueHistory($closedPrArray) {
 		foreach ($issueUrlArr as $isslArr) {
 			$closedData = 0;
 			$n = split('/', $issueUrlArr[$k]);
-			
 			for($j= 1; $j < 400; $j++){
-
 				$url = $issue->assignClient($isslArr, "&page=" . $j, "&per_page=100&state=closed");
-
 				$rawData = $issue->getCurlData($url, true);
-
 				if (!$rawData) {
 					break;
 
@@ -135,17 +123,14 @@ public function getPullsHistory() {
 		$issueUrlArr[$i++] = $value['pulls_url'];
 	}
 	$date = new \DateTime();
-
-			$isoFormat =  $date->format('c = U');
-			$isoFormat = split(' = ', $isoFormat);
-			$isoFormat = substr($isoFormat[0], 0, 19);
-			$isoFormat = $isoFormat . 'Z';
-			$today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
+    $isoFormat =  $date->format('c = U');
+    $isoFormat = split(' = ', $isoFormat);
+    $isoFormat = substr($isoFormat[0], 0, 19);
+    $isoFormat = $isoFormat . 'Z';
+    $today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
 	$filename = "../repo_history/repo_pulls_history.txt";
-
 	$handle = fopen($filename, 'a+');
 	fwrite($handle, $today);
-
 	$fileData = "";
 	$dataString = array();
 	$dataArray = array();
@@ -157,16 +142,11 @@ public function getPullsHistory() {
 	foreach ($issueUrlArr as $isslArr) {
 		$closedData = 0;
 		$n = split('/',$issueUrlArr[$k]);
-		
 		for ($j= 1; $j < 400; $j++) {
-
 			$url = $pull->assignClient($isslArr, "&page=" . $j, "&per_page=100");
-
 			$rawData = $pull->getCurlData($url, true);
-
 			if(!$rawData){
 				break;
-
 			}else{
 				$closedData += $rawData;
 			}
@@ -181,7 +161,6 @@ public function getPullsHistory() {
 
 public function getIssueHistory($openPrArray) {
     $stringVal = file_get_contents("../repo_collection/rep.json");
-
     $json_a = json_decode($stringVal, true);
     $issueUrlArr = array();
     $i = 0;
@@ -193,13 +172,10 @@ public function getIssueHistory($openPrArray) {
     $isoFormat = split(' = ', $isoFormat);
     $isoFormat = substr($isoFormat[0], 0, 19);
     $isoFormat = $isoFormat . 'Z';
-
     $today = "*". $isoFormat . " = " .$date->format('U') .',' . PHP_EOL;
     $filename = "../repo_history/repo_issue_history.txt";
-
     $handle = fopen($filename, 'a+');
     fwrite($handle, $today);
-
     $fileData = "";
     $dataString = array();
     $dataArray = array();
@@ -211,16 +187,11 @@ public function getIssueHistory($openPrArray) {
     foreach ($issueUrlArr as $isslArr) {
         $closedData = 0;
         $n = split('/', $issueUrlArr[$k]);
-
         for ($j= 1; $j < 400; $j++) {
-
             $url = $issue->assignClient($isslArr, "&page=" . $j, "&per_page=100&state=open");
-
             $rawData = $issue->getCurlData($url, true);
-
             if (!$rawData) {
                 break;
-
             } else {
                 $closedData += $rawData;
             }
